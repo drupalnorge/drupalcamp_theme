@@ -1,0 +1,20 @@
+{
+    "name": "drupalnorge/drupalcamp_theme",
+    "description": "drupalcamp_theme",
+    "type": "drupal-theme",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Eirik S. Morland",
+            "email": "eirik@morland.no"
+        }
+    ],
+    "require": {
+        "drupal/bootstrap"
+    }
+}
