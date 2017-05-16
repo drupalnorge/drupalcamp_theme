@@ -1,0 +1,31 @@
+{
+  "name": "drupalcamp_theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm i && ./node_modules/.bin/gulp watch",
+    "postinstall": "cp -r node_modules/bootstrap-sass/assets bootstrap/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drupalnorge/drupalcamp_theme.git"
+  },
+  "keywords": [],
+  "author": "Eirik S. Morland <eirik@morland.no>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drupalnorge/drupalcamp_theme/issues"
+  },
+  "homepage": "https://github.com/drupalnorge/drupalcamp_theme#readme",
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0"
+  }
+}
