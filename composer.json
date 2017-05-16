@@ -15,6 +15,6 @@
         }
     ],
     "require": {
-        "drupal/bootstrap"
+        "drupal/bootstrap": "~3"
     }
 }
