@@ -129,3 +129,12 @@ a.logo img {
     font-size: 32px;
   }
 }
+article.session .user__compact {
+  float: left;
+}
+article.session .author {
+  @extend .clearfix;
+}
+.field--label {
+  margin: 1em 0;
+}
