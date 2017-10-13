@@ -19,7 +19,7 @@ function drupalcamp_theme_preprocess_block(&$variables) {
 function drupalcamp_theme_preprocess_node(&$variables) {
   /** @var \Drupal\node\Entity\Node $node */
   $node = $variables['node'];
-  if ($node->bundle() == 'session') {
+  if ($node->bundle() == 'session' && $variables['view_mode'] == 'full') {
     // Attach also the user display under the node.
     $renderer = \Drupal::entityTypeManager()
       ->getViewBuilder('user');
