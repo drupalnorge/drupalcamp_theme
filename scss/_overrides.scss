@@ -135,6 +135,12 @@ article.session .user__compact {
 article.session .author {
   @extend .clearfix;
 }
+article > footer,
 .field--label {
   margin: 1em 0;
+}
+article > footer {
+  background: $table-bg-hover;
+  padding: 1em;
+
 }
