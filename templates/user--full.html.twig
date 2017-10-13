@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col">
+      {{ content.field_user_picture }}
+    </div>
+    <div class="col-8">
+      <article{{ attributes }}>
+        {% if content %}
+          {{- content|without('field_user_picture') -}}
+        {% endif %}
+      </article>
+    </div>
+  </div>
+</div>
