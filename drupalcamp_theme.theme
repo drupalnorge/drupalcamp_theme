@@ -23,7 +23,7 @@ function drupalcamp_theme_preprocess_node(&$variables) {
     // Attach also the user display under the node.
     $renderer = \Drupal::entityTypeManager()
       ->getViewBuilder('user');
-    $variables['content']['user'] = $renderer->view($node->getRevisionAuthor());
+    $variables['content']['user'] = $renderer->view($node->getOwner());
     $variables['content']['user']['#weight'] = 200;
     $variables['content']['user']['#prefix'] = '<h4>' . t('About the speaker') . '</h4>';
   }
