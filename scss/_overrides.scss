@@ -144,3 +144,21 @@ article > footer {
   padding: 1em;
 
 }
+#block-views-block-sponsor-blocks-block-2,
+#block-views-block-sponsor-blocks-block-1 {
+  text-align: center;
+  @extend .container;
+  .view-content {
+    @extend .row;
+  }
+}
+#block-views-block-sponsor-blocks-block-1 {
+  .views-row {
+    @extend .col-sm-6;
+  }
+}
+#block-views-block-sponsor-blocks-block-2 {
+  .views-row {
+    @extend .col-sm-3;
+  }
+}
