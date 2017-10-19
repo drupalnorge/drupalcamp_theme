@@ -27,4 +27,10 @@ function drupalcamp_theme_preprocess_node(&$variables) {
     $variables['content']['user']['#weight'] = 200;
     $variables['content']['user']['#prefix'] = '<h4>' . t('About the speaker') . '</h4>';
   }
+  if ($node->bundle() == 'sponsor') {
+    // Add the link URL as a variable.
+    $url = $node->field_sponsor_url->first()->getValue();
+    $variables['sponsor_url'] = $url['uri'];
+    $variables['sponsor_image'] = $variables['content']['field_sponsor_logo'];
+  }
 }
