@@ -1,0 +1,26 @@
+.view-sessions {
+    
+  .view-content > div{
+    display: flex;
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
+
+  h3 {
+    margin-right: 20px;
+    color: #9d9d9d;
+  }
+
+  .views-row {
+    h2 {
+      font-size: $font-size-h3 / 1.2;
+      a {
+        color: #222;
+      }
+    }
+  }
+}
