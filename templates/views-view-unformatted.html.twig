@@ -19,7 +19,8 @@
 #}
 {% if title %}
   <div>
-  <h3>{{ title }}</h3>
+    <h3>{{ title }}</h3>
+    <div class="views-rows">
 {% endif %}
 {% for row in rows %}
   {%
@@ -32,5 +33,6 @@
   </div>
 {% endfor %}
 {% if title %}
+    </div>
   </div>
 {% endif %}
