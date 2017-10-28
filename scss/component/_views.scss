@@ -24,3 +24,28 @@
     }
   }
 }
+#block-views-block-sponsor-blocks-block-1,
+#block-views-block-sponsor-blocks-block-2,
+#block-views-block-sponsor-blocks-block-3 {
+  text-align: center;
+  @extend .container;
+  .view-content {
+    @extend .row;
+  }
+}
+#block-views-block-sponsor-blocks-block-1 {
+  .views-row {
+    @extend .col-sm-4;
+  }
+}
+
+#block-views-block-sponsor-blocks-block-2 {
+  .views-row {
+    @extend .col-sm-2;
+  }
+}
+#block-views-block-sponsor-blocks-block-3 {
+  .views-row {
+    @extend .col-sm-1;
+  }
+}

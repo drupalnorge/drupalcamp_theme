@@ -34,3 +34,45 @@ function drupalcamp_theme_preprocess_node(&$variables) {
     $variables['sponsor_image'] = $variables['content']['field_sponsor_logo'];
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Add column padding to sponsor blocks so they are centered.
+ */
+function drupalcamp_theme_preprocess_views_view_unformatted(&$vars) {
+  /** @var \Drupal\views\ViewExecutable $view */
+  $view = $vars['view'];
+  if ($view->id() != 'sponsor_blocks') {
+    return;
+  }
+  if (empty($vars['rows'])) {
+    return;
+  }
+  /** @var \Drupal\views\Plugin\views\display\DisplayPluginBase $display */
+  $display = $view->getDisplay();
+  $display_id = $display->display['id'];
+  $max_in_row = 2;
+  $padding = 2;
+  $divider = 1;
+  switch ($display_id) {
+    case 'block_2':
+      $max_in_row = 4;
+      break;
+
+    case 'block_3';
+      $max_in_row = 8;
+      $divider = 2;
+      break;
+  }
+
+  // See how many results there are, and then how much column padding we should
+  // add.
+  $num_results = count($view->result);
+  if ($num_results !== $max_in_row) {
+    $padding = (int) ($padding + (($max_in_row - $num_results) / $divider));
+  }
+  /** @var \Drupal\Core\Template\Attribute $attr */
+  $attr = $vars['rows'][0]['attributes'];
+  $attr->addClass('col-md-offset-' . $padding);
+}
