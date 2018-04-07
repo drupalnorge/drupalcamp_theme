@@ -50,13 +50,17 @@ function _drupalcamp_theme_create_featured_speaker_variables(&$variables) {
   $variables['user_image'] = '';
   $variables['name'] = '';
   $variables['intro'] = '';
+  $variables['user_url'] = '';
   // Try to load the user in question.
   if (!$node->field_speaker || $node->field_speaker->isEmpty()) {
     return;
   }
   /** @var \Drupal\user\Entity\User $user */
   $user = $node->field_speaker->entity;
-  $variables['name'] = $user->label();
+  $variables['user_url'] = \Drupal\Core\Url::fromRoute('entity.user.canonical', [
+    'user' => $user->id(),
+  ])->toString();
+  $variables['name'] = $node->label();
   // Get the picture, if any.
   if ($user->field_user_picture && !$user->field_user_picture->isEmpty()) {
     /** @var \Drupal\file\Entity\File $pic */
@@ -65,7 +69,7 @@ function _drupalcamp_theme_create_featured_speaker_variables(&$variables) {
       '#type' => 'inline_template',
       '#template' => '<img src="{{ image }} " />',
       '#context' => [
-        'image' => ImageStyle::load('medium')->buildUrl($pic->getFileUri()),
+        'image' => ImageStyle::load('square')->buildUrl($pic->getFileUri()),
       ],
     ];
   }

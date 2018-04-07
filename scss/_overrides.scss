@@ -152,3 +152,18 @@ body.drupalcamp-2018 {
     
   }
 }
+.field--name-field-user-picture,
+.view-id-featured_speakers {
+  img {
+    max-width: 100%;
+    border-radius: 50%;
+    border: 5px solid $brand-primary;
+  }
+}
+.block-views-blockfeatured-speakers-block-1 {
+  h2 {
+    text-align: center;
+    padding: 1em;
+  }
+  padding: 2em 0;
+}
