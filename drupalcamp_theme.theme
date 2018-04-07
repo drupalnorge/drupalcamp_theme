@@ -5,6 +5,8 @@
  * Drupal camp theme thing.
  */
 
+use Drupal\image\Entity\ImageStyle;
+
 /**
  * Implements hook_preprocess_HOOK().
  */
@@ -33,6 +35,44 @@ function drupalcamp_theme_preprocess_node(&$variables) {
     $variables['sponsor_url'] = $url['uri'];
     $variables['sponsor_image'] = $variables['content']['field_sponsor_logo'];
   }
+  if ($node->bundle() == 'featured_speaker') {
+    _drupalcamp_theme_create_featured_speaker_variables($variables);
+  }
+}
+
+/**
+ * Creates some variables.
+ */
+function _drupalcamp_theme_create_featured_speaker_variables(&$variables) {
+  /** @var \Drupal\node\Entity\Node $node */
+  $node = $variables['node'];
+  // Make some variables available.
+  $variables['user_image'] = '';
+  $variables['name'] = '';
+  $variables['intro'] = '';
+  // Try to load the user in question.
+  if (!$node->field_speaker || $node->field_speaker->isEmpty()) {
+    return;
+  }
+  /** @var \Drupal\user\Entity\User $user */
+  $user = $node->field_speaker->entity;
+  $variables['name'] = $user->label();
+  // Get the picture, if any.
+  if ($user->field_user_picture && !$user->field_user_picture->isEmpty()) {
+    /** @var \Drupal\file\Entity\File $pic */
+    $pic = $user->field_user_picture->entity;
+    $variables['user_image'] = [
+      '#type' => 'inline_template',
+      '#template' => '<img src="{{ image }} " />',
+      '#context' => [
+        'image' => ImageStyle::load('medium')->buildUrl($pic->getFileUri()),
+      ],
+    ];
+  }
+  if ($node->field_short_intro && !$node->field_short_intro->isEmpty()) {
+    $variables['intro'] = $node->field_short_intro->first()->getString();
+  }
+
 }
 
 /**
