@@ -145,4 +145,10 @@ article > footer {
   padding: 1em;
 
 }
-
+body.drupalcamp-2018 {
+  #block-contact-block,
+  footer .views-element-container {
+    display: none;
+    
+  }
+}
