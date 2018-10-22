@@ -19,6 +19,26 @@
 // jQuery UI style overrides.
 @import "jquery-ui/autocomplete";
 
+
+// Import font family
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700');
+
+@media (min-width: 768px) {
+  .offset-md-1 {
+    margin-left: 8.333333%;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+}
+h1, h2 {
+  font-weight: 400;
+}
+h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
 ol, ul {
   padding-left: 1.5em;
   .popover &:last-child {
@@ -28,7 +48,8 @@ ol, ul {
 
 // Page header.
 .page-header {
-  margin-top: 0;
+  margin: 1em 0;
+  padding-bottom: 1em;
 }
 
 // Footer.
@@ -68,6 +89,13 @@ p:last-child,
     margin-top: 0;
   }
 }
+
+body {
+  font-size: 18px;
+  line-height: 26px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f6f6f6;
+}
 body.path-frontpage {
   .col-sm-12[role="heading"] {
     padding: 0;
@@ -100,6 +128,7 @@ body.path-frontpage {
   }
   a {
     color: #000;
+
   }
   a i {
     font-size: 28px;
@@ -130,6 +159,27 @@ a.logo img {
     font-size: 32px;
   }
 }
+.page-node-type-news h1.page-header {
+  line-height: 1.4em;
+}
+article .sidebar .field{
+  background-color: #fff;
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,.15);
+  //border: 1px solid #337ab7;
+  padding: 20px 30px 40px 30px;
+}
+
+article img {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+article h2,
+article h3,
+article h4 {
+  clear: both;
+  line-height: 1.4em;
+}
+
 article.session .user__compact {
   float: left;
 }
