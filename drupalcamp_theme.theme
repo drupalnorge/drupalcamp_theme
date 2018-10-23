@@ -7,6 +7,7 @@
 
 use Drupal\Core\Url;
 use Drupal\image\Entity\ImageStyle;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -91,6 +92,9 @@ function _drupalcamp_theme_create_featured_speaker_variables(&$variables) {
 function drupalcamp_theme_preprocess_views_view_unformatted(&$vars) {
   /** @var \Drupal\views\ViewExecutable $view */
   $view = $vars['view'];
+  if ($view->id() == 'sessions') {
+    drupalcamp_theme_preprocess_sessions_view($vars);
+  }
   if ($view->id() != 'sponsor_blocks') {
     return;
   }
@@ -123,4 +127,41 @@ function drupalcamp_theme_preprocess_views_view_unformatted(&$vars) {
   /** @var \Drupal\Core\Template\Attribute $attr */
   $attr = $vars['rows'][0]['attributes'];
   $attr->addClass('col-md-offset-' . $padding);
+}
+
+/**
+ * Fix day headers on the rows.
+ */
+function drupalcamp_theme_preprocess_sessions_view(&$vars) {
+  // See if this is the first session of the day.
+  /** @var \Drupal\views\ViewExecutable $view */
+  $view = $vars['view'];
+  $headings = drupalcamp_theme_get_session_headings($view);
+  foreach ($vars["rows"] as $delta => $row) {
+    if (!empty($headings[$delta])) {
+      $vars['pre_title'] = $headings[$delta];
+    }
+  }
+}
+
+/**
+ * Helper.
+ */
+function drupalcamp_theme_get_session_headings(ViewExecutable $view) {
+  $data = &drupal_static(__FUNCTION__);
+  if (isset($data)) {
+    return $data;
+  }
+  $headings = [];
+  $last_heading = NULL;
+  foreach ($view->result as $delta => $row) {
+    $date = strtotime($row->node__field_session_time_field_session_time_value);
+    $potential_heading = format_date($date, 'custom', 'l d.m.Y');
+    if ($potential_heading != $last_heading) {
+      $last_heading = $potential_heading;
+      $headings[$delta] = $potential_heading;
+    }
+  }
+  $data = $headings;
+  return $headings;
 }

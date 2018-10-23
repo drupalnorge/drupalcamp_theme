@@ -17,6 +17,9 @@
  * @ingroup themeable
  */
 #}
+{% if pre_title %}
+  <h2>{{ pre_title }}</h2>
+{% endif %}
 {% if title %}
   <div>
     <h3>{{ title }}</h3>
