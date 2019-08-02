@@ -156,6 +156,9 @@ function drupalcamp_theme_get_session_headings(ViewExecutable $view) {
   $last_heading = NULL;
   foreach ($view->result as $delta => $row) {
     $date = strtotime($row->node__field_session_time_field_session_time_value);
+    if (!$date) {
+      continue;
+    }
     $potential_heading = format_date($date, 'custom', 'l d.m.Y');
     if ($potential_heading != $last_heading) {
       $last_heading = $potential_heading;
