@@ -6,14 +6,15 @@ var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
 
-gulp.task('styles', function() {
-  gulp.src('scss/style.scss')
+gulp.task('styles', async function(cb) {
+  await gulp.src('scss/style.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(plumber())
     .pipe(sourcemaps.write())
     .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
     .pipe(gulp.dest('css'));
+  cb()
 });
 
 gulp.task('watch', function() {
@@ -24,5 +25,5 @@ gulp.task('watch', function() {
       livereload.changed.apply(this, args);
     }, 200);
   });
-  gulp.watch(['scss/**/*'], ['styles']);
+  gulp.watch(['scss/**/*'], gulp.series(['styles']));
 });

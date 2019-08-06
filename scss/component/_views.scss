@@ -1,5 +1,5 @@
 .view-sessions {
-    
+
   .view-content > div{
     display: flex;
     border-bottom: 1px solid #E5E5E5;
@@ -24,6 +24,7 @@
     }
   }
 }
+#block-views-block-sponsor-blocks-block-4,
 #block-views-block-sponsor-blocks-block-1,
 #block-views-block-sponsor-blocks-block-2,
 #block-views-block-sponsor-blocks-block-3 {
@@ -31,6 +32,11 @@
   @extend .container;
   .view-content {
     @extend .row;
+  }
+}
+#block-views-block-sponsor-blocks-block-4 {
+  .views-row {
+    @extend .col-sm-8;
   }
 }
 #block-views-block-sponsor-blocks-block-1 {
