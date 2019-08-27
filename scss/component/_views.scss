@@ -24,10 +24,14 @@
     }
   }
 }
+.media-partner,
 #block-views-block-sponsor-blocks-block-4,
 #block-views-block-sponsor-blocks-block-1,
 #block-views-block-sponsor-blocks-block-2,
 #block-views-block-sponsor-blocks-block-3 {
+  img {
+    max-width: 100%;
+  }
   text-align: center;
   @extend .container;
   .view-content {

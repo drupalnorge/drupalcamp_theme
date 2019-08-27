@@ -168,3 +168,13 @@ function drupalcamp_theme_get_session_headings(ViewExecutable $view) {
   $data = $headings;
   return $headings;
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ */
+function drupalcamp_theme_preprocess_page(&$variables) {
+  $variables["page"]["footer"]['media_partner'] = [
+    '#markup' => '<section class="media-partner"><h2>' . t('Media partner') . '</h2><p><a href="http://www.theweeklydrop.com/"><img src="/themes/contrib/drupalcamp_theme/images/weekly.png" /></a></p></section>',
+  ];
+}
