@@ -199,7 +199,7 @@ body.drupalcamp-2018 {
   #block-contact-block,
   footer .views-element-container {
     display: none;
-    
+
   }
 }
 .field--name-field-user-picture,
@@ -216,4 +216,7 @@ body.drupalcamp-2018 {
     padding: 1em;
   }
   padding: 2em 0;
+}
+body.path-e-commerce-conference .media-partner {
+  display: none;
 }
